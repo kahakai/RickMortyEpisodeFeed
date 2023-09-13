@@ -24,6 +24,20 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        Task {
+            let url = URL(string: "https://rickandmortyapi.com/api")!
+            let apiClient: APIClient = APIClientImpl(baseURL: url)
+            let result: Result<Episodes, Error> = await apiClient.fetch(endpoint: EpisodesEndpoint())
+            switch result {
+                case .success(let feed):
+                    // Do something with the fetched feed.
+                    print(feed)
+                case .failure(let error):
+                    // Handle the error.
+                    print(error)
+                }
+        }
     }
 
     private func setupConstraints() {

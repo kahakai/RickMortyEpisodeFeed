@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Episodes
 struct Episodes: Codable {
     let info: Info
-    let results: [Episode]
+    let results: [RemoteEpisode]
 }
 
 // MARK: - Info
@@ -22,7 +22,7 @@ struct Info: Codable {
 }
 
 // MARK: - Episode
-struct Episode: Codable {
+struct RemoteEpisode: Codable {
     let id: Int
     let name: String
     let airDate: String

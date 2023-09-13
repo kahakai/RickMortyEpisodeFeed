@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		482A13042AB1245900F9A802 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A13032AB1245900F9A802 /* FeedViewController.swift */; };
-		48AFF53F2AB13FCA00AB0F17 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF53E2AB13FCA00AB0F17 /* Episode.swift */; };
 		48AFF5432AB13FF700AB0F17 /* EpisodeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */; };
 		48AFF5452AB1400900AB0F17 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */; };
 		48AFF5472AB1401A00AB0F17 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5462AB1401A00AB0F17 /* FeedViewModel.swift */; };
@@ -27,7 +26,6 @@
 
 /* Begin PBXFileReference section */
 		482A13032AB1245900F9A802 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		48AFF53E2AB13FCA00AB0F17 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeEntity.swift; sourceTree = "<group>"; };
 		48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
 		48AFF5462AB1401A00AB0F17 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 		48AFF5382AB13BF900AB0F17 /* Local */ = {
 			isa = PBXGroup;
 			children = (
-				48AFF53E2AB13FCA00AB0F17 /* Episode.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -255,7 +252,6 @@
 				48AFF5452AB1400900AB0F17 /* EpisodeRepository.swift in Sources */,
 				482A13042AB1245900F9A802 /* FeedViewController.swift in Sources */,
 				48BC4DCE2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld in Sources */,
-				48AFF53F2AB13FCA00AB0F17 /* Episode.swift in Sources */,
 				48BC4DC62AB11190007C9464 /* SceneDelegate.swift in Sources */,
 				48AFF5512AB1FCD300AB0F17 /* APIClientImpl.swift in Sources */,
 				48AFF54F2AB1F86D00AB0F17 /* Endpoint.swift in Sources */,
