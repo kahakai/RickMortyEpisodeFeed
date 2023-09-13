@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		482A13042AB1245900F9A802 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A13032AB1245900F9A802 /* FeedViewController.swift */; };
 		48AFF53F2AB13FCA00AB0F17 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF53E2AB13FCA00AB0F17 /* Episode.swift */; };
-		48AFF5432AB13FF700AB0F17 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5422AB13FF700AB0F17 /* Episode.swift */; };
+		48AFF5432AB13FF700AB0F17 /* EpisodeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */; };
 		48AFF5452AB1400900AB0F17 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */; };
 		48AFF5472AB1401A00AB0F17 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5462AB1401A00AB0F17 /* FeedViewModel.swift */; };
-		48AFF5492AB1EF2500AB0F17 /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5482AB1EF2500AB0F17 /* Episodes.swift */; };
+		48AFF5492AB1EF2500AB0F17 /* EpisodesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5482AB1EF2500AB0F17 /* EpisodesResponse.swift */; };
 		48AFF54D2AB1F77D00AB0F17 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF54C2AB1F77D00AB0F17 /* APIClient.swift */; };
 		48AFF54F2AB1F86D00AB0F17 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF54E2AB1F86D00AB0F17 /* Endpoint.swift */; };
 		48AFF5512AB1FCD300AB0F17 /* APIClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5502AB1FCD300AB0F17 /* APIClientImpl.swift */; };
 		48AFF5532AB1FE6000AB0F17 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5522AB1FE6000AB0F17 /* APIError.swift */; };
+		48AFF5552AB2037C00AB0F17 /* EpisodesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5542AB2037C00AB0F17 /* EpisodesEndpoint.swift */; };
 		48BC4DC42AB11190007C9464 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC4DC32AB11190007C9464 /* AppDelegate.swift */; };
 		48BC4DC62AB11190007C9464 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC4DC52AB11190007C9464 /* SceneDelegate.swift */; };
 		48BC4DCE2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48BC4DCC2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld */; };
@@ -27,14 +28,15 @@
 /* Begin PBXFileReference section */
 		482A13032AB1245900F9A802 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		48AFF53E2AB13FCA00AB0F17 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
-		48AFF5422AB13FF700AB0F17 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeEntity.swift; sourceTree = "<group>"; };
 		48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
 		48AFF5462AB1401A00AB0F17 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
-		48AFF5482AB1EF2500AB0F17 /* Episodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episodes.swift; sourceTree = "<group>"; };
+		48AFF5482AB1EF2500AB0F17 /* EpisodesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesResponse.swift; sourceTree = "<group>"; };
 		48AFF54C2AB1F77D00AB0F17 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		48AFF54E2AB1F86D00AB0F17 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		48AFF5502AB1FCD300AB0F17 /* APIClientImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientImpl.swift; sourceTree = "<group>"; };
 		48AFF5522AB1FE6000AB0F17 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		48AFF5542AB2037C00AB0F17 /* EpisodesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesEndpoint.swift; sourceTree = "<group>"; };
 		48BC4DC02AB11190007C9464 /* RickMortyEpisodeFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickMortyEpisodeFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BC4DC32AB11190007C9464 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48BC4DC52AB11190007C9464 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +112,7 @@
 		48AFF53B2AB13C5500AB0F17 /* Episodes */ = {
 			isa = PBXGroup;
 			children = (
-				48AFF5422AB13FF700AB0F17 /* Episode.swift */,
+				48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */,
 				48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */,
 			);
 			path = Episodes;
@@ -119,7 +121,8 @@
 		48AFF53C2AB13E4600AB0F17 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				48AFF5482AB1EF2500AB0F17 /* Episodes.swift */,
+				48AFF5542AB2037C00AB0F17 /* EpisodesEndpoint.swift */,
+				48AFF5482AB1EF2500AB0F17 /* EpisodesResponse.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -245,8 +248,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				48BC4DC42AB11190007C9464 /* AppDelegate.swift in Sources */,
-				48AFF5492AB1EF2500AB0F17 /* Episodes.swift in Sources */,
-				48AFF5432AB13FF700AB0F17 /* Episode.swift in Sources */,
+				48AFF5492AB1EF2500AB0F17 /* EpisodesResponse.swift in Sources */,
+				48AFF5552AB2037C00AB0F17 /* EpisodesEndpoint.swift in Sources */,
+				48AFF5432AB13FF700AB0F17 /* EpisodeEntity.swift in Sources */,
 				48AFF54D2AB1F77D00AB0F17 /* APIClient.swift in Sources */,
 				48AFF5452AB1400900AB0F17 /* EpisodeRepository.swift in Sources */,
 				482A13042AB1245900F9A802 /* FeedViewController.swift in Sources */,

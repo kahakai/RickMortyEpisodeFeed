@@ -17,7 +17,12 @@ class APIClientImpl: APIClient {
     }
 
     func fetch<T: Decodable>(endpoint: Endpoint) async -> Result<T, Error> {
-        let request = endpoint.request(with: baseURL)
+        guard let url = endpoint.makeURL(with: baseURL) else {
+            return .failure(APIError.invalidURL)
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = endpoint.httpMethod.rawValue
 
         do {
             let (data, response) = try await session.data(for: request)

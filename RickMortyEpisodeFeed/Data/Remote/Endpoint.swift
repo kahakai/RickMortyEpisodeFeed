@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum HTTPMethod {
-    case get
-    case post
+enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
 }
 
 protocol Endpoint {
     var path: String { get }
     var httpMethod: HTTPMethod { get }
 
-    func request(with baseURL: URL) -> URLRequest
+    func makeURL(with baseURL: URL) -> URL?
 }
