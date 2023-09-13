@@ -13,6 +13,10 @@
 		48AFF5452AB1400900AB0F17 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */; };
 		48AFF5472AB1401A00AB0F17 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5462AB1401A00AB0F17 /* FeedViewModel.swift */; };
 		48AFF5492AB1EF2500AB0F17 /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5482AB1EF2500AB0F17 /* Episodes.swift */; };
+		48AFF54D2AB1F77D00AB0F17 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF54C2AB1F77D00AB0F17 /* APIClient.swift */; };
+		48AFF54F2AB1F86D00AB0F17 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF54E2AB1F86D00AB0F17 /* Endpoint.swift */; };
+		48AFF5512AB1FCD300AB0F17 /* APIClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5502AB1FCD300AB0F17 /* APIClientImpl.swift */; };
+		48AFF5532AB1FE6000AB0F17 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5522AB1FE6000AB0F17 /* APIError.swift */; };
 		48BC4DC42AB11190007C9464 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC4DC32AB11190007C9464 /* AppDelegate.swift */; };
 		48BC4DC62AB11190007C9464 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC4DC52AB11190007C9464 /* SceneDelegate.swift */; };
 		48BC4DCE2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48BC4DCC2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld */; };
@@ -27,6 +31,10 @@
 		48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
 		48AFF5462AB1401A00AB0F17 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		48AFF5482AB1EF2500AB0F17 /* Episodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episodes.swift; sourceTree = "<group>"; };
+		48AFF54C2AB1F77D00AB0F17 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		48AFF54E2AB1F86D00AB0F17 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		48AFF5502AB1FCD300AB0F17 /* APIClientImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientImpl.swift; sourceTree = "<group>"; };
+		48AFF5522AB1FE6000AB0F17 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		48BC4DC02AB11190007C9464 /* RickMortyEpisodeFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickMortyEpisodeFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BC4DC32AB11190007C9464 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48BC4DC52AB11190007C9464 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +67,8 @@
 		48AFF5352AB13B1200AB0F17 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				48BC4DCC2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld */,
+				48AFF54B2AB1F76700AB0F17 /* Local */,
+				48AFF54A2AB1F75F00AB0F17 /* Remote */,
 				48AFF53A2AB13C4400AB0F17 /* Episodes */,
 			);
 			path = Data;
@@ -113,6 +122,25 @@
 				48AFF5482AB1EF2500AB0F17 /* Episodes.swift */,
 			);
 			path = Remote;
+			sourceTree = "<group>";
+		};
+		48AFF54A2AB1F75F00AB0F17 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				48AFF54C2AB1F77D00AB0F17 /* APIClient.swift */,
+				48AFF5502AB1FCD300AB0F17 /* APIClientImpl.swift */,
+				48AFF5522AB1FE6000AB0F17 /* APIError.swift */,
+				48AFF54E2AB1F86D00AB0F17 /* Endpoint.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		48AFF54B2AB1F76700AB0F17 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				48BC4DCC2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 		48BC4DB72AB11190007C9464 = {
@@ -219,12 +247,16 @@
 				48BC4DC42AB11190007C9464 /* AppDelegate.swift in Sources */,
 				48AFF5492AB1EF2500AB0F17 /* Episodes.swift in Sources */,
 				48AFF5432AB13FF700AB0F17 /* Episode.swift in Sources */,
+				48AFF54D2AB1F77D00AB0F17 /* APIClient.swift in Sources */,
 				48AFF5452AB1400900AB0F17 /* EpisodeRepository.swift in Sources */,
 				482A13042AB1245900F9A802 /* FeedViewController.swift in Sources */,
 				48BC4DCE2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld in Sources */,
 				48AFF53F2AB13FCA00AB0F17 /* Episode.swift in Sources */,
 				48BC4DC62AB11190007C9464 /* SceneDelegate.swift in Sources */,
+				48AFF5512AB1FCD300AB0F17 /* APIClientImpl.swift in Sources */,
+				48AFF54F2AB1F86D00AB0F17 /* Endpoint.swift in Sources */,
 				48AFF5472AB1401A00AB0F17 /* FeedViewModel.swift in Sources */,
+				48AFF5532AB1FE6000AB0F17 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
