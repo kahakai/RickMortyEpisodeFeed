@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		482A13042AB1245900F9A802 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A13032AB1245900F9A802 /* FeedViewController.swift */; };
 		48AFF5432AB13FF700AB0F17 /* EpisodeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */; };
-		48AFF5452AB1400900AB0F17 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */; };
 		48AFF5472AB1401A00AB0F17 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5462AB1401A00AB0F17 /* FeedViewModel.swift */; };
 		48AFF5492AB1EF2500AB0F17 /* EpisodesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF5482AB1EF2500AB0F17 /* EpisodesResponse.swift */; };
 		48AFF54D2AB1F77D00AB0F17 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AFF54C2AB1F77D00AB0F17 /* APIClient.swift */; };
@@ -22,12 +21,12 @@
 		48BC4DCE2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48BC4DCC2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld */; };
 		48BC4DD02AB11192007C9464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BC4DCF2AB11192007C9464 /* Assets.xcassets */; };
 		48BC4DD32AB11192007C9464 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BC4DD12AB11192007C9464 /* LaunchScreen.storyboard */; };
+		48D4DE662AB26AF60032D566 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE652AB26AF60032D566 /* EpisodeRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		482A13032AB1245900F9A802 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeEntity.swift; sourceTree = "<group>"; };
-		48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
 		48AFF5462AB1401A00AB0F17 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		48AFF5482AB1EF2500AB0F17 /* EpisodesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesResponse.swift; sourceTree = "<group>"; };
 		48AFF54C2AB1F77D00AB0F17 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		48BC4DCF2AB11192007C9464 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48BC4DD22AB11192007C9464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48BC4DD42AB11192007C9464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48D4DE652AB26AF60032D566 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +100,7 @@
 		48AFF53A2AB13C4400AB0F17 /* Episodes */ = {
 			isa = PBXGroup;
 			children = (
+				48D4DE652AB26AF60032D566 /* EpisodeRepository.swift */,
 				48AFF5382AB13BF900AB0F17 /* Local */,
 				48AFF53C2AB13E4600AB0F17 /* Remote */,
 			);
@@ -110,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */,
-				48AFF5442AB1400900AB0F17 /* EpisodeRepository.swift */,
 			);
 			path = Episodes;
 			sourceTree = "<group>";
@@ -245,11 +245,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				48BC4DC42AB11190007C9464 /* AppDelegate.swift in Sources */,
+				48D4DE662AB26AF60032D566 /* EpisodeRepository.swift in Sources */,
 				48AFF5492AB1EF2500AB0F17 /* EpisodesResponse.swift in Sources */,
 				48AFF5552AB2037C00AB0F17 /* EpisodesEndpoint.swift in Sources */,
 				48AFF5432AB13FF700AB0F17 /* EpisodeEntity.swift in Sources */,
 				48AFF54D2AB1F77D00AB0F17 /* APIClient.swift in Sources */,
-				48AFF5452AB1400900AB0F17 /* EpisodeRepository.swift in Sources */,
 				482A13042AB1245900F9A802 /* FeedViewController.swift in Sources */,
 				48BC4DCE2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld in Sources */,
 				48BC4DC62AB11190007C9464 /* SceneDelegate.swift in Sources */,

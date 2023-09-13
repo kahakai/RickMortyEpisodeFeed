@@ -1,5 +1,5 @@
 //
-//  Episodes.swift
+//  EpisodesResponse.swift
 //  RickMortyEpisodeFeed
 //
 //  Created by Artyom Nesterenko on 13/09/2023.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - Episodes
-struct Episodes: Codable {
+// MARK: - EpisodesResponse
+struct EpisodesResponse: Codable {
     let info: Info
     let results: [RemoteEpisode]
 }
