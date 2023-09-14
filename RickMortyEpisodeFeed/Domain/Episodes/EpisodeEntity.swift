@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct EpisodeEntity {
+    let code: String
+    let name: String
+    let date: Date
+}

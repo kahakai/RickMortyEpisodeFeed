@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Combine
 
-final class EpisodeRepository {
+final class EpisodeRepository: EpisodeRepositoryProtocol {
     private let apiClient: APIClient
     private let persistenceController: PersistenceController
+
+    private var cancellables = Set<AnyCancellable>()
 
     init(
         apiClient: APIClient,
@@ -18,6 +21,27 @@ final class EpisodeRepository {
         self.apiClient = apiClient
         self.persistenceController = persistenceController
     }
+    
+    func fetchAll() -> AnyPublisher<[EpisodeEntity], Error> {
+        let managedContext = persistenceController.container.viewContext
+        let request = Episode.fetchRequest()
+
+        return persistenceController
+            .publisher(context: managedContext, fetch: request)
+            .map { episodesPublisher in
+                episodesPublisher.map { episode in
+                    EpisodeEntity(
+                        code: episode.episode!,
+                        name: episode.name!,
+                        date: episode.date!
+                    )
+                }
+            }
+            .mapError { nserror in
+                nserror as Error
+            }
+            .eraseToAnyPublisher()
+    }
 
     func refreshEpisodes() async -> Result<Void, Error> {
         let endpoint = EpisodesEndpoint()
@@ -25,14 +49,13 @@ final class EpisodeRepository {
 
         switch result {
         case .success(let response):
-            saveEpisodes(response.results)
-            return .success(())
+            return saveEpisodes(response.results)
         case .failure(let error):
             return .failure(error)
         }
     }
 
-    private func saveEpisodes(_ episodes: [RemoteEpisode]) {
+    private func saveEpisodes(_ episodes: [RemoteEpisode]) -> Result<Void, Error> {
         let managedContext = persistenceController.container.viewContext
 
         let dateFormatter = DateFormatter()
@@ -50,6 +73,11 @@ final class EpisodeRepository {
             return episode
         }
 
-        try? managedContext.save()
+        do {
+            try managedContext.save()
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
     }
 }

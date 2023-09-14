@@ -26,6 +26,7 @@
 		48D4DE6C2AB31AC60032D566 /* CoreDataPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE6B2AB31AC60032D566 /* CoreDataPublisher.swift */; };
 		48D4DE6F2AB31CD90032D566 /* CoreDataPublishing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE6E2AB31CD90032D566 /* CoreDataPublishing.swift */; };
 		48D4DE722AB31DD20032D566 /* CoreDataPublishingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE712AB31DD20032D566 /* CoreDataPublishingExtension.swift */; };
+		48D4DE742AB324840032D566 /* EpisodeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE732AB324840032D566 /* EpisodeRepositoryProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		48D4DE6B2AB31AC60032D566 /* CoreDataPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublisher.swift; sourceTree = "<group>"; };
 		48D4DE6E2AB31CD90032D566 /* CoreDataPublishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublishing.swift; sourceTree = "<group>"; };
 		48D4DE712AB31DD20032D566 /* CoreDataPublishingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublishingExtension.swift; sourceTree = "<group>"; };
+		48D4DE732AB324840032D566 /* EpisodeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepositoryProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				48D4DE652AB26AF60032D566 /* EpisodeRepository.swift */,
 				48AFF5382AB13BF900AB0F17 /* Local */,
 				48AFF53C2AB13E4600AB0F17 /* Remote */,
+				48D4DE732AB324840032D566 /* EpisodeRepositoryProtocol.swift */,
 			);
 			path = Episodes;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				48BC4DC42AB11190007C9464 /* AppDelegate.swift in Sources */,
 				48D4DE662AB26AF60032D566 /* EpisodeRepository.swift in Sources */,
 				48AFF5492AB1EF2500AB0F17 /* EpisodesResponse.swift in Sources */,
+				48D4DE742AB324840032D566 /* EpisodeRepositoryProtocol.swift in Sources */,
 				48D4DE692AB317C70032D566 /* Persistence.swift in Sources */,
 				48AFF5552AB2037C00AB0F17 /* EpisodesEndpoint.swift in Sources */,
 				48AFF5432AB13FF700AB0F17 /* EpisodeEntity.swift in Sources */,
