@@ -28,7 +28,25 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
 
         return persistenceController
             .publisher(context: managedContext, fetch: request)
-            .map { episodesPublisher in
+            .flatMap { episodes in
+                return Future<[Episode], NSError> { [self] promise in
+                    guard episodes.isEmpty else {
+                        return promise(.success(episodes))
+                    }
+
+                    Task {
+                        let result = await refreshAll()
+
+                        switch result {
+                        case .success(let newEpisodes):
+                            return promise(.success(newEpisodes))
+                        case .failure(let error):
+                            return promise(.failure(error as NSError))
+                        }
+                    }
+                }
+            }
+            .map { (episodesPublisher: [Episode]) in
                 episodesPublisher.map { episode in
                     EpisodeEntity(
                         code: episode.episode!,
@@ -43,19 +61,20 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
             .eraseToAnyPublisher()
     }
 
-    func refreshEpisodes() async -> Result<Void, Error> {
-        let endpoint = EpisodesEndpoint()
-        let result: Result<EpisodesResponse, Error> = await apiClient.fetch(endpoint: endpoint)
+    private func refreshAll() async -> Result<[Episode], Error> {
+        let episodesEndpoint = EpisodesEndpoint()
+        let episodesResult: Result<EpisodesResponse, Error> =
+            await apiClient.fetch(endpoint: episodesEndpoint)
 
-        switch result {
+        switch episodesResult {
         case .success(let response):
-            return saveEpisodes(response.results)
+            return save(episodes: response.results)
         case .failure(let error):
             return .failure(error)
         }
     }
 
-    private func saveEpisodes(_ episodes: [RemoteEpisode]) -> Result<Void, Error> {
+    private func save(episodes: [RemoteEpisode]) -> Result<[Episode], Error> {
         let managedContext = persistenceController.container.viewContext
 
         let dateFormatter = DateFormatter()
@@ -75,7 +94,7 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
 
         do {
             try managedContext.save()
-            return .success(())
+            return .success(localEpisodes)
         } catch {
             return .failure(error)
         }
