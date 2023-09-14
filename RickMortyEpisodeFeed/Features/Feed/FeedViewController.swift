@@ -9,18 +9,34 @@ import UIKit
 import Combine
 
 final class FeedViewController: UIViewController {
-    private let feedViewModel: FeedViewModel
+    private let viewModel: FeedViewModel
 
     private var cancellables = Set<AnyCancellable>()
 
-    private lazy var textLabel: UILabel = {
+    private let tableViewDataSource = EpisodesTableViewDataSource()
+    private let tableViewDelegate = EpisodesTableViewDelegate()
+
+    private lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.dataSource = tableViewDataSource
+        table.delegate = tableViewDelegate
+        table.register(
+            EpisodeCell.self,
+            forCellReuseIdentifier: EpisodeCell.reuseIdentifier
+        )
+        table.rowHeight = 96
+        return table
+    }()
+
+    private lazy var emptyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hello, World!"
+        label.text = "No Rick & Morty episodes!"
+        label.isHidden = true
         return label
     }()
 
     init(feedViewModel: FeedViewModel) {
-        self.feedViewModel = feedViewModel
+        self.viewModel = feedViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,8 +46,8 @@ final class FeedViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
-        view.addSubview(textLabel)
+        view.addSubview(tableView)
+        view.addSubview(emptyLabel)
 
         setupConstraints()
     }
@@ -39,28 +55,48 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        feedViewModel.getEpisodes()
-            .sink(receiveValue: { state in
-                switch state {
-                case .idle:
-                    print("idle")
-                case .loading:
-                    print("loading")
-                case .success(let episodes):
-                    print("success: \(episodes)")
-                case .failure(let error):
-                    print("failure: \(error)")
-                }
+        bind(to: viewModel)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        tableView.frame = view.bounds
+    }
+
+    private func setupConstraints() {
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+
+    private func bind(to viewModel: FeedViewModel) {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+
+        viewModel.getEpisodes()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [unowned self] state in
+                render(state)
             })
             .store(in: &cancellables)
     }
 
-    private func setupConstraints() {
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            textLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+    private func render(_ state: FeedState) {
+        switch state {
+        case .idle:
+            debugPrint("render state idle")
+        case .loading:
+            debugPrint("render state loading")
+        case .success(let episodes):
+            debugPrint("render state success: \(episodes)")
+            tableViewDataSource.update(with: episodes)
+            tableView.reloadData()
+        case .failure(let error):
+            debugPrint("render state failure: \(error)")
+        }
     }
 }
