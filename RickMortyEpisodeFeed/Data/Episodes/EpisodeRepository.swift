@@ -6,18 +6,17 @@
 //
 
 import Foundation
-import CoreData
 
 final class EpisodeRepository {
     private let apiClient: APIClient
-    private let persistentContainer: NSPersistentContainer
+    private let persistenceController: PersistenceController
 
     init(
         apiClient: APIClient,
-        persistentContainer: NSPersistentContainer
+        persistenceController: PersistenceController
     ) {
         self.apiClient = apiClient
-        self.persistentContainer = persistentContainer
+        self.persistenceController = persistenceController
     }
 
     func refreshEpisodes() async -> Result<Void, Error> {
@@ -34,7 +33,7 @@ final class EpisodeRepository {
     }
 
     private func saveEpisodes(_ episodes: [RemoteEpisode]) {
-        let managedContext = persistentContainer.viewContext
+        let managedContext = persistenceController.container.viewContext
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, yyyy"

@@ -22,6 +22,10 @@
 		48BC4DD02AB11192007C9464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BC4DCF2AB11192007C9464 /* Assets.xcassets */; };
 		48BC4DD32AB11192007C9464 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BC4DD12AB11192007C9464 /* LaunchScreen.storyboard */; };
 		48D4DE662AB26AF60032D566 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE652AB26AF60032D566 /* EpisodeRepository.swift */; };
+		48D4DE692AB317C70032D566 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE682AB317C70032D566 /* Persistence.swift */; };
+		48D4DE6C2AB31AC60032D566 /* CoreDataPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE6B2AB31AC60032D566 /* CoreDataPublisher.swift */; };
+		48D4DE6F2AB31CD90032D566 /* CoreDataPublishing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE6E2AB31CD90032D566 /* CoreDataPublishing.swift */; };
+		48D4DE722AB31DD20032D566 /* CoreDataPublishingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE712AB31DD20032D566 /* CoreDataPublishingExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		48BC4DD22AB11192007C9464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48BC4DD42AB11192007C9464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D4DE652AB26AF60032D566 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
+		48D4DE682AB317C70032D566 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		48D4DE6B2AB31AC60032D566 /* CoreDataPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublisher.swift; sourceTree = "<group>"; };
+		48D4DE6E2AB31CD90032D566 /* CoreDataPublishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublishing.swift; sourceTree = "<group>"; };
+		48D4DE712AB31DD20032D566 /* CoreDataPublishingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublishingExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +146,7 @@
 		48AFF54B2AB1F76700AB0F17 /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				48D4DE672AB315C90032D566 /* Core Data */,
 				48BC4DCC2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld */,
 			);
 			path = Local;
@@ -172,6 +181,41 @@
 				48BC4DD42AB11192007C9464 /* Info.plist */,
 			);
 			path = RickMortyEpisodeFeed;
+			sourceTree = "<group>";
+		};
+		48D4DE672AB315C90032D566 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				48D4DE6A2AB31AA20032D566 /* Publisher */,
+				48D4DE682AB317C70032D566 /* Persistence.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		48D4DE6A2AB31AA20032D566 /* Publisher */ = {
+			isa = PBXGroup;
+			children = (
+				48D4DE702AB31DAE0032D566 /* Extensions */,
+				48D4DE6D2AB31CC90032D566 /* Protocols */,
+				48D4DE6B2AB31AC60032D566 /* CoreDataPublisher.swift */,
+			);
+			path = Publisher;
+			sourceTree = "<group>";
+		};
+		48D4DE6D2AB31CC90032D566 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				48D4DE6E2AB31CD90032D566 /* CoreDataPublishing.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		48D4DE702AB31DAE0032D566 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				48D4DE712AB31DD20032D566 /* CoreDataPublishingExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,12 +291,16 @@
 				48BC4DC42AB11190007C9464 /* AppDelegate.swift in Sources */,
 				48D4DE662AB26AF60032D566 /* EpisodeRepository.swift in Sources */,
 				48AFF5492AB1EF2500AB0F17 /* EpisodesResponse.swift in Sources */,
+				48D4DE692AB317C70032D566 /* Persistence.swift in Sources */,
 				48AFF5552AB2037C00AB0F17 /* EpisodesEndpoint.swift in Sources */,
 				48AFF5432AB13FF700AB0F17 /* EpisodeEntity.swift in Sources */,
+				48D4DE6C2AB31AC60032D566 /* CoreDataPublisher.swift in Sources */,
 				48AFF54D2AB1F77D00AB0F17 /* APIClient.swift in Sources */,
 				482A13042AB1245900F9A802 /* FeedViewController.swift in Sources */,
+				48D4DE722AB31DD20032D566 /* CoreDataPublishingExtension.swift in Sources */,
 				48BC4DCE2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld in Sources */,
 				48BC4DC62AB11190007C9464 /* SceneDelegate.swift in Sources */,
+				48D4DE6F2AB31CD90032D566 /* CoreDataPublishing.swift in Sources */,
 				48AFF5512AB1FCD300AB0F17 /* APIClientImpl.swift in Sources */,
 				48AFF54F2AB1F86D00AB0F17 /* Endpoint.swift in Sources */,
 				48AFF5472AB1401A00AB0F17 /* FeedViewModel.swift in Sources */,
