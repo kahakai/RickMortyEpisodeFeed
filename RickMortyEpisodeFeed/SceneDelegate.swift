@@ -11,15 +11,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let windowScene = scene as? UIWindowScene else {
+            return
+        }
 
         let newWindow = UIWindow(windowScene: windowScene)
 
-        let viewController = FeedViewController()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
 
-        newWindow.rootViewController = viewController
+        newWindow.rootViewController = createRootViewController(appDelegate: appDelegate)
         newWindow.makeKeyAndVisible()
 
         window = newWindow
@@ -56,6 +59,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
-
+    private func createRootViewController(appDelegate: AppDelegate) -> UIViewController {
+        let baseURL = URL(string: "https://rickandmortyapi.com/api")!
+        let persistenceController = appDelegate.persistenceController
+        let apiClient: APIClient = APIClientImpl(baseURL: baseURL)
+        let episodeRepository = EpisodeRepository(
+            apiClient: apiClient,
+            persistenceController: persistenceController
+        )
+        let feedViewModel = FeedViewModel(episodeRepository: episodeRepository)
+        return FeedViewController(feedViewModel: feedViewModel)
+    }
 }
-
