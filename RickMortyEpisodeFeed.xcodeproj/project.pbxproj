@@ -27,6 +27,8 @@
 		48D4DE6F2AB31CD90032D566 /* CoreDataPublishing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE6E2AB31CD90032D566 /* CoreDataPublishing.swift */; };
 		48D4DE722AB31DD20032D566 /* CoreDataPublishingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE712AB31DD20032D566 /* CoreDataPublishingExtension.swift */; };
 		48D4DE742AB324840032D566 /* EpisodeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE732AB324840032D566 /* EpisodeRepositoryProtocol.swift */; };
+		48D4DE772AB33A8C0032D566 /* CombineExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE762AB33A8C0032D566 /* CombineExtensions.swift */; };
+		48D4DE792AB33B350032D566 /* FeedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4DE782AB33B350032D566 /* FeedState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		48D4DE6E2AB31CD90032D566 /* CoreDataPublishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublishing.swift; sourceTree = "<group>"; };
 		48D4DE712AB31DD20032D566 /* CoreDataPublishingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublishingExtension.swift; sourceTree = "<group>"; };
 		48D4DE732AB324840032D566 /* EpisodeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepositoryProtocol.swift; sourceTree = "<group>"; };
+		48D4DE762AB33A8C0032D566 /* CombineExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtensions.swift; sourceTree = "<group>"; };
+		48D4DE782AB33B350032D566 /* FeedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 		482A13022AB1242900F9A802 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				48D4DE782AB33B350032D566 /* FeedState.swift */,
 				482A13032AB1245900F9A802 /* FeedViewController.swift */,
 				48AFF5462AB1401A00AB0F17 /* FeedViewModel.swift */,
 			);
@@ -103,6 +108,7 @@
 		48AFF5382AB13BF900AB0F17 /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -111,9 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				48D4DE652AB26AF60032D566 /* EpisodeRepository.swift */,
+				48D4DE732AB324840032D566 /* EpisodeRepositoryProtocol.swift */,
 				48AFF5382AB13BF900AB0F17 /* Local */,
 				48AFF53C2AB13E4600AB0F17 /* Remote */,
-				48D4DE732AB324840032D566 /* EpisodeRepositoryProtocol.swift */,
 			);
 			path = Episodes;
 			sourceTree = "<group>";
@@ -121,7 +127,6 @@
 		48AFF53B2AB13C5500AB0F17 /* Episodes */ = {
 			isa = PBXGroup;
 			children = (
-				48AFF5422AB13FF700AB0F17 /* EpisodeEntity.swift */,
 			);
 			path = Episodes;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 		48BC4DC22AB11190007C9464 /* RickMortyEpisodeFeed */ = {
 			isa = PBXGroup;
 			children = (
+				48D4DE752AB33A6C0032D566 /* Extensions */,
 				48AFF5352AB13B1200AB0F17 /* Data */,
 				48AFF5362AB13B1A00AB0F17 /* Domain */,
 				48AFF5372AB13B2200AB0F17 /* Features */,
@@ -217,6 +223,14 @@
 			isa = PBXGroup;
 			children = (
 				48D4DE712AB31DD20032D566 /* CoreDataPublishingExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		48D4DE752AB33A6C0032D566 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				48D4DE762AB33A8C0032D566 /* CombineExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -291,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D4DE772AB33A8C0032D566 /* CombineExtensions.swift in Sources */,
 				48BC4DC42AB11190007C9464 /* AppDelegate.swift in Sources */,
 				48D4DE662AB26AF60032D566 /* EpisodeRepository.swift in Sources */,
 				48AFF5492AB1EF2500AB0F17 /* EpisodesResponse.swift in Sources */,
@@ -305,6 +320,7 @@
 				48BC4DCE2AB11190007C9464 /* RickMortyEpisodeFeed.xcdatamodeld in Sources */,
 				48BC4DC62AB11190007C9464 /* SceneDelegate.swift in Sources */,
 				48D4DE6F2AB31CD90032D566 /* CoreDataPublishing.swift in Sources */,
+				48D4DE792AB33B350032D566 /* FeedState.swift in Sources */,
 				48AFF5512AB1FCD300AB0F17 /* APIClientImpl.swift in Sources */,
 				48AFF54F2AB1F86D00AB0F17 /* Endpoint.swift in Sources */,
 				48AFF5472AB1401A00AB0F17 /* FeedViewModel.swift in Sources */,

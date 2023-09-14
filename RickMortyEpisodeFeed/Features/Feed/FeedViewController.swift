@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 final class FeedViewController: UIViewController {
+    private var cancellables = Set<AnyCancellable>()
+
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello, World!"
