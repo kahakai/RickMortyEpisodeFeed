@@ -21,33 +21,29 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
         self.apiClient = apiClient
         self.persistenceController = persistenceController
     }
-    
+
     func fetchAll() -> AnyPublisher<[EpisodeEntity], Error> {
+        return fetchAllLocal()
+            .flatMap { [self] episodes in
+                guard episodes.isEmpty else {
+                    return Just(episodes)
+                        .setFailureType(to: Error.self)
+                        .eraseToAnyPublisher()
+                }
+                
+                return fetchAllRemote()
+            }
+            .eraseToAnyPublisher()
+    }
+
+    private func fetchAllLocal() -> AnyPublisher<[EpisodeEntity], Error> {
         let managedContext = persistenceController.container.viewContext
         let request = Episode.fetchRequest()
 
         return persistenceController
             .publisher(context: managedContext, fetch: request)
-            .flatMap { episodes in
-                return Future<[Episode], NSError> { [self] promise in
-                    guard episodes.isEmpty else {
-                        return promise(.success(episodes))
-                    }
-
-                    Task {
-                        let result = await refreshAll()
-
-                        switch result {
-                        case .success(let newEpisodes):
-                            return promise(.success(newEpisodes))
-                        case .failure(let error):
-                            return promise(.failure(error as NSError))
-                        }
-                    }
-                }
-            }
-            .map { (episodesPublisher: [Episode]) in
-                episodesPublisher.map { episode in
+            .map { episodes in
+                episodes.map { episode in
                     EpisodeEntity(
                         code: episode.episode!,
                         name: episode.name!,
@@ -61,17 +57,37 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
             .eraseToAnyPublisher()
     }
 
-    private func refreshAll() async -> Result<[Episode], Error> {
-        let episodesEndpoint = EpisodesEndpoint()
-        let episodesResult: Result<EpisodesResponse, Error> =
-            await apiClient.fetch(endpoint: episodesEndpoint)
+    private func fetchAllRemote() -> AnyPublisher<[EpisodeEntity], Error> {
+        return Future<[EpisodeEntity], Error> { [self] promise in
+            Task {
+                let endpoint = EpisodesEndpoint()
+                let result: Result<EpisodesResponse, Error> =
+                    await apiClient.fetch(endpoint: endpoint)
+                
+                switch result {
+                case .success(let response):
+                    let saveResult = save(episodes: response.results)
 
-        switch episodesResult {
-        case .success(let response):
-            return save(episodes: response.results)
-        case .failure(let error):
-            return .failure(error)
+                    switch saveResult {
+                    case .success(let localEpisodes):
+                        let episodeEntities = localEpisodes.map { episode in
+                            EpisodeEntity(
+                                code: episode.episode!,
+                                name: episode.name!,
+                                date: episode.date!
+                            )
+                        }
+
+                        return promise(.success(episodeEntities))
+                    case .failure(let error):
+                        return promise(.failure(error))
+                    }
+                case .failure(let error):
+                    return promise(.failure(error))
+                }
+            }
         }
+        .eraseToAnyPublisher()
     }
 
     private func save(episodes: [RemoteEpisode]) -> Result<[Episode], Error> {
