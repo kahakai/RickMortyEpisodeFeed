@@ -12,8 +12,6 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
     private let apiClient: APIClient
     private let persistenceController: PersistenceController
 
-    private var cancellables = Set<AnyCancellable>()
-
     init(
         apiClient: APIClient,
         persistenceController: PersistenceController
@@ -24,7 +22,7 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
 
     func fetchAll() -> AnyPublisher<[EpisodeEntity], Error> {
         return fetchAllLocal()
-            .flatMap { [self] episodes in
+            .flatMap { [self] (episodes: [Episode]) in
                 guard episodes.isEmpty else {
                     return Just(episodes)
                         .setFailureType(to: Error.self)
@@ -33,17 +31,8 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
                 
                 return fetchAllRemote()
             }
-            .eraseToAnyPublisher()
-    }
-
-    private func fetchAllLocal() -> AnyPublisher<[EpisodeEntity], Error> {
-        let managedContext = persistenceController.container.viewContext
-        let request = Episode.fetchRequest()
-
-        return persistenceController
-            .publisher(context: managedContext, fetch: request)
-            .map { episodes in
-                episodes.map { episode in
+            .map { (newEpisodes: [Episode]) in
+                return newEpisodes.map { episode in
                     EpisodeEntity(
                         code: episode.episode!,
                         name: episode.name!,
@@ -51,14 +40,23 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
                     )
                 }
             }
+            .eraseToAnyPublisher()
+    }
+
+    private func fetchAllLocal() -> AnyPublisher<[Episode], Error> {
+        let managedContext = persistenceController.container.viewContext
+        let request = Episode.fetchRequest()
+
+        return persistenceController
+            .publisher(context: managedContext, fetch: request)
             .mapError { nserror in
                 nserror as Error
             }
             .eraseToAnyPublisher()
     }
 
-    private func fetchAllRemote() -> AnyPublisher<[EpisodeEntity], Error> {
-        return Future<[EpisodeEntity], Error> { [self] promise in
+    private func fetchAllRemote() -> AnyPublisher<[Episode], Error> {
+        return Future<EpisodesResponse, Error> { [self] promise in
             Task {
                 let endpoint = EpisodesEndpoint()
                 let result: Result<EpisodesResponse, Error> =
@@ -66,31 +64,20 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
                 
                 switch result {
                 case .success(let response):
-                    let saveResult = save(episodes: response.results)
-
-                    switch saveResult {
-                    case .success(let localEpisodes):
-                        let episodeEntities = localEpisodes.map { episode in
-                            EpisodeEntity(
-                                code: episode.episode!,
-                                name: episode.name!,
-                                date: episode.date!
-                            )
-                        }
-
-                        return promise(.success(episodeEntities))
-                    case .failure(let error):
-                        return promise(.failure(error))
-                    }
+                    return promise(.success(response))
                 case .failure(let error):
                     return promise(.failure(error))
                 }
             }
         }
+        .asyncMap { [self] response in
+            let remoteEpisodes = response.results
+            return try await save(episodes: remoteEpisodes)
+        }
         .eraseToAnyPublisher()
     }
 
-    private func save(episodes: [RemoteEpisode]) -> Result<[Episode], Error> {
+    private func save(episodes: [RemoteEpisode]) async throws -> [Episode] {
         let managedContext = persistenceController.container.viewContext
 
         let dateFormatter = DateFormatter()
@@ -108,11 +95,8 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
             return episode
         }
 
-        do {
-            try managedContext.save()
-            return .success(localEpisodes)
-        } catch {
-            return .failure(error)
-        }
+        try managedContext.save()
+        
+        return localEpisodes
     }
 }
